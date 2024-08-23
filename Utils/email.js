@@ -10,8 +10,8 @@ const sendEmail = ({ to, subject, message }) => new Promise((resolve, reject) =>
     })
     transport.sendMail({
         from: process.env.FROM_EMAIL,
-        to,
-        subject,
+        to: to,
+        subject: subject,
         text: message,
         html: message
     }, err => {

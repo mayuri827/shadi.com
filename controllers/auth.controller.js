@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler")
-const { checkEmpty } = require("../utils/checkEmpty")
+const { checkEmpty } = require("../Utils/checkEmpty")
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
 const JWT = require("jsonwebtoken")
