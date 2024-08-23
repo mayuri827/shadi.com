@@ -3,7 +3,7 @@ const { checkEmpty } = require("../Utils/checkEmpty")
 const validator = require("validator")
 const bcrypt = require("bcryptjs")
 const JWT = require("jsonwebtoken")
-const sendEmail = require("../utils/email")
+const sendEmail = require("../Utils/email")
 const Admin = require("../models/Admin")
 // const Auth = require("../models/Auth")
 
