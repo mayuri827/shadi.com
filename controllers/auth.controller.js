@@ -17,15 +17,15 @@ exports.RegisterAdmin = asyncHandler(async (req, res) => {
     if (!validator.isEmail(email)) {
         return res.status(400).json({ message: "Invalid Email" })
     }
-    if (!validator.isStrongPassword(password)) {
-        return res.status(400).json({ message: "Provide Strong Password" })
-    }
+    // if (!validator.isStrongPassword(password)) {
+    //     return res.status(400).json({ message: "Provide Strong Password" })
+    // }
     const isFound = await Admin.findOne({ email })
     if (isFound) {
         return res.status(400).json({ message: "Email Already registered with us" })
     }
     const hash = await bcrypt.hash(password, 10)
-    await Admin.create({ name, email, password: hash })
+    await Admin.create({ email, password: hash })
     res.json({ message: "Admin Register Success" })
 })
 exports.LoginAdmin = asyncHandler(async (req, res) => {

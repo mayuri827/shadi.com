@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cors())
 
 mongoose.connect(process.env.MONGO_URL)
-app.use("/api/user", require("./routers/user.router"))
+app.use("/api/auth", require("./routers/user.router"))
 app.use("/api/auth", require("./routers/auth.routes"))
 
 app.use("*", (req, res) => {

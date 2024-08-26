@@ -11,8 +11,8 @@ exports.registerUser = asyncHandler(async (req, res) => {
     if (isFound) {
         return res.status(400).json({ message: "Email Already Exist" })
     }
-    // const hashPass = await bcrypt.hash(password, 10)
-    await User.create({ ...req.body, password })
+    const hashPass = await bcrypt.hash(password, 10)
+    await User.create({ ...req.body, password: hashPass })
     // Send Email 
     // await sendEmail({
     //     to: email,
@@ -27,6 +27,8 @@ exports.Userlogin = asyncHandler(async (req, res) => {
 
     // step 1
     const result = await User.findOne({ email })
+    console.log(result);
+
     if (!result) {
         return res.status(400).json({ message: "Email Not Found" })
     }
@@ -56,4 +58,7 @@ exports.Userlogin = asyncHandler(async (req, res) => {
 exports.logout = asyncHandler(async (req, res) => {
     res.clearCookie("auth-token")
     res.json({ message: "Logout Success" })
+})
+exports.getProfile = asyncHandler(async (req, res) => {
+
 })
